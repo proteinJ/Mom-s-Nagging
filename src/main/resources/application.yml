@@ -29,3 +29,14 @@ jwt:
   secret: ${JWT_SECRET}
   access-token-validity-in-milliseconds: ${JWT_ACCESS_TOKEN_TIME}
   refresh-token-validity-in-milliseconds: ${JWT_REFRESH_TOKEN_TIME}
+
+external:
+  naver:
+    client-id: ${NAVER_CLIENT_ID}
+    client-secret: ${NAVER_CLIENT_SECRET}
+    directions-url: "https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving" # 5 또는 15 사용
+
+ai:
+  google:
+    api-key: ${GOOGLE_API_KEY}
+    gemini-url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
