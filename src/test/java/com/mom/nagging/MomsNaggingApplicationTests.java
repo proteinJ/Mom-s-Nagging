@@ -7,7 +7,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 class MomsNaggingApplicationTests {
 
 	@Test
-	void contextLoads() {
+	@Display(name="")
+	void () {
+	    // when
+
+	    // then
 	}
 
 }

@@ -129,15 +129,11 @@ public class MemberService {
      * 비밀번호 변경
      */
     @Transactional
-    public void changePassword(String email, String bearerToken, MemberRequest.PasswordChange dto) {
-
-        // 1. UserDetails에서 넘겨받은 email(UserDetails.username())로 실제 유저 조회
-        Member member = memberRepository.findByEmail(email)
-                .orElseThrow(() -> new BusinessException(ErrorCode.MEMBER_NOT_FOUND));
+    public void changePassword(Member member, String bearerToken, MemberRequest.PasswordChange dto) {
 
         // 2. 현재 비밀번호가 맞는지 검증
         if (!passwordEncoder.matches(dto.oldPassword(), member.getPassword())) {
-            log.warn("비밀번호 변경 실패: 비밀번호 불일치 - 이메일: {}", member.getEmail());
+            log.warn("비밀번호 변경 실패: 비밀번호 불일치 - 멤버식별아이디: {}", member.getId());
             throw new BusinessException(ErrorCode.INVALID_LOGIN_CREDENTIALS);
         }
 

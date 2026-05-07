@@ -1,8 +1,9 @@
+# 이거?
 spring:
   datasource:
-    url: ${DB_URL}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    url: jdbc:postgresql://localhost:5433/momsnagging
+    username: postgres
+    password: password
     driver-class-name: org.postgresql.Driver
 
   jpa:

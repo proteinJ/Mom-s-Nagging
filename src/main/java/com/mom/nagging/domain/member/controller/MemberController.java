@@ -1,9 +1,11 @@
 package com.mom.nagging.domain.member.controller;
 
+import com.mom.nagging.domain.member.domain.Member;
 import com.mom.nagging.domain.member.domain.TokenDto;
 import com.mom.nagging.domain.member.dto.MemberRequest;
 import com.mom.nagging.domain.member.service.MemberService;
 import com.mom.nagging.global.common.ApiResponse;
+import com.mom.nagging.global.common.annotaion.LoginMember;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -45,7 +47,7 @@ public class MemberController {
 
     @PostMapping("/password")
     public ResponseEntity<ApiResponse<String>> changePassword(
-            @AuthenticationPrincipal UserDetails userDetails,
+            @LoginMember Member member,
             @RequestHeader("Authorization") String bearerToken,
             @RequestBody @Valid MemberRequest.PasswordChange dto
         )
@@ -56,7 +58,7 @@ public class MemberController {
             log.info("### Principal 타입: " + auth.getPrincipal().getClass());
         }
 
-        memberService.changePassword(userDetails.getUsername(), bearerToken, dto);
+        memberService.changePassword(member, bearerToken, dto);
         return ResponseEntity.ok(ApiResponse.success("비밀번호 변경 완료 - 다시 로그인해주세요."));
     }
 

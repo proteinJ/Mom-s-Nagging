@@ -19,10 +19,19 @@ public class Member {
     private Long id;
 
     @Column(nullable = false)
+    private String email;
+
+    @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
+    private String realname;
 
     @Column(nullable = false, unique = true, length = 50)
     private String nickname;
+
+    @Column(nullable = false)
+    private int totalPoint;
 
     @Column(columnDefinition = "geometry(Point, 4326)")
     private Point lastLocation;

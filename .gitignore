@@ -37,3 +37,4 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 
+vision-key.json

@@ -21,8 +21,12 @@ public enum ErrorCode {
     AUTHENTICATION_FAILED(HttpStatus.UNAUTHORIZED, "A001", " 인증에 실패하였습니다."),
     TOKEN_EXPIRED(HttpStatus.UNAUTHORIZED, "A002", " 토큰이 만료되었습니다."),
     INVALID_TOKEN(HttpStatus.UNAUTHORIZED, "A003", " 유효하지 않은 토큰입니다."),
-    ACCESS_DENIED(HttpStatus.FORBIDDEN, "A005", " 접근 권한이 없습니다.");
+    ACCESS_DENIED(HttpStatus.FORBIDDEN, "A005", " 접근 권한이 없습니다."),
 
+
+    // Image
+    NOT_FOUND_FILE(HttpStatus.BAD_REQUEST, "I001", "파일이 비어있습니다. 정상적인 이미지를 업로드해주세요.");
+// 5.7일자
     private final HttpStatus httpStatus;
     private final String code;
     private final String message;

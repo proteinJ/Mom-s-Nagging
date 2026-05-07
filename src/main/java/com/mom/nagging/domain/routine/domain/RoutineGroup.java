@@ -3,6 +3,8 @@ package com.mom.nagging.domain.routine.domain;
 import com.mom.nagging.domain.member.domain.Member;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "routine_group")
 public class RoutineGroup {
@@ -27,7 +29,7 @@ public class RoutineGroup {
      */
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "routine_item_id")
-    private RoutineItem item;
+    private List<RoutineItem> item;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")

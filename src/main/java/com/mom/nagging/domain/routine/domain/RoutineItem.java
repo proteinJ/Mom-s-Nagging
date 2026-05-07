@@ -4,6 +4,8 @@ import com.mom.nagging.domain.schedule.domain.Schedule;
 import jakarta.persistence.*;
 
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "routine_item")
@@ -47,8 +49,6 @@ public class RoutineItem {
     @JoinColumn(name = "routine_group_id")
     private RoutineGroup routineGroup;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "schedule_id")
-    private Schedule schedule;
-
+    @OneToMany(mappedBy = "routineItem", cascade = CascadeType.ALL)
+    private List<Schedule> schedules = new ArrayList<>();
 }
