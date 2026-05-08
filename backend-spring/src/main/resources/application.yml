@@ -1,0 +1,43 @@
+
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.spatial.dialect.postgis.PostgisPG95Dialect # 혹은 최신 버전 반영
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+        dialect: org.hibernate.spatial.dialect.postgis.PostgisPG95Dialect
+
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+jwt:
+  secret: ${JWT_SECRET}
+  access-token-validity-in-milliseconds: ${JWT_ACCESS_TOKEN_TIME}
+  refresh-token-validity-in-milliseconds: ${JWT_REFRESH_TOKEN_TIME}
+
+external:
+  naver:
+    client-id: ${NAVER_CLIENT_ID}
+    client-secret: ${NAVER_CLIENT_SECRET}
+    directions-url: "https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving" # 5 또는 15 사용
+
+ai:
+  google:
+    api-key: ${GOOGLE_API_KEY}
+    gemini-url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
