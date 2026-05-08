@@ -4,11 +4,11 @@ services:
     image: postgis/postgis:16-3.4
     container_name: nagging-postgres-container
     ports:
-      - "5433:5432" # 포트도 확실하게 5433으로 고정!
+      - "${DB_PORT}:5432" # 포트도 확실하게 5433으로 고정!
     environment:
       POSTGRES_DB: momsnagging
-      POSTGRES_USER: postgres # 주의: application.yml에 적힌 username과 같아야 함!
-      POSTGRES_PASSWORD: password # 주의: application.yml에 적힌 password와 같아야 함!
+      POSTGRES_USER: "${DB_USERNAME}" # 주의: application.yml에 적힌 username과 같아야 함!
+      POSTGRES_PASSWORD: "${DB_PASSWORD}" # 주의: application.yml에 적힌 password와 같아야 함!
       TZ: Asia/Seoul
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
