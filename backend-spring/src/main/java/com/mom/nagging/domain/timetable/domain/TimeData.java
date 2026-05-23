@@ -22,7 +22,7 @@ public class TimeData {
 
     private int period;
 
-    private String subject;
+    private String subjectName;
 
     @Column(name = "start_time")
     private LocalTime startTime;
@@ -33,19 +33,12 @@ public class TimeData {
     @Column(name = "details")
     private String details;
 
+    private String professor;
+
+    private String location;
+
     @Setter
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "timetable_id")
     private TimeTable timeTable;
-
-    @Builder
-    public TimeData(DayOfWeek dayOfWeek, int period, String subject, LocalTime startTime, LocalTime endTime, String details) {
-        this.dayOfWeek = dayOfWeek;
-        this.period = period;
-        this.subject = subject;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.details = details;
-    }
-
 }

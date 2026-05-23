@@ -4,6 +4,7 @@ postgres_data/
 # 로컬 환경 변수
 .env
 docker-compose.override.yml
+../ai-fastapi/vision-key.json
 
 # 빌드 및 설정 파일
 build/
@@ -37,5 +38,3 @@ bin/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
-
-vision-key.json

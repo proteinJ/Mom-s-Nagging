@@ -29,6 +29,7 @@ public class TimeTable {
     private Member member;
 
     // 여러 TimeData(하나의 강의) 매핑
+    @Builder.Default
     @OneToMany(mappedBy = "timeTable", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TimeData> timeDataList = new ArrayList<>();
 

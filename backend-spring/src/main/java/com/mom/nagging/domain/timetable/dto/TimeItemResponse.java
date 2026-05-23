@@ -11,7 +11,7 @@ import java.time.LocalTime;
 @Getter
 @Builder
 @Schema(description = "개별 강의 정보 DTO")
-public class TimeItemResponse { // 💡 이름 변경 (단건임을 명확히)
+public class TimeItemResponse {
 
     @Schema(description = "DB 시간표 ID", example = "1")
     private Long id;
@@ -31,8 +31,11 @@ public class TimeItemResponse { // 💡 이름 변경 (단건임을 명확히)
     @Schema(description = "종료 시간", example = "10:30")
     private LocalTime endTime;
 
-    @Schema(description = "교수 및 장소", example = "옥수열 S06-0609 승학")
-    private String details;
+    @Schema(description = "교수", example = "옥수열")
+    private String professor;
+
+    @Schema(description = "장소", example = "S06-601")
+    private String location;
 
     // 정적 팩토리 메서드 (컨벤션 유지)
     public static TimeItemResponse of(TimeData timeData) {
@@ -40,10 +43,11 @@ public class TimeItemResponse { // 💡 이름 변경 (단건임을 명확히)
                 .id(timeData.getId())
                 .dayOfWeek(timeData.getDayOfWeek())
                 .period(timeData.getPeriod())
-                .subject(timeData.getSubject())
+                .subject(timeData.getSubjectName())
                 .startTime(timeData.getStartTime())
                 .endTime(timeData.getEndTime())
-                .details(timeData.getDetails())
+                .professor(timeData.getProfessor())
+                .location(timeData.getLocation())
                 .build();
     }
 }

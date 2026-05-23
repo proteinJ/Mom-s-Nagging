@@ -1,4 +1,19 @@
-.env
+### Python / FastAPI ###
+.venv/
 venv/
+ENV/
+env/
 __pycache__/
-weights/best.pt
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+### AI Weights ###
+*.pt
+*.pth
+*.onnx
+
+### Secrets & Configs ###
+.env
+*.json

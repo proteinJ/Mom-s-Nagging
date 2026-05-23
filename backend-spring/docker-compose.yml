@@ -1,4 +1,4 @@
-version: '3.8'
+#version: '3.8'
 services:
   db:
     image: postgis/postgis:16-3.4
@@ -20,3 +20,15 @@ services:
     ports:
       - "${REDIS_PORT}:6379"
     restart: always
+
+  # FastAPI AI 서버
+  ai-server:
+    build:
+      context: ../ai-fastapi
+      dockerfile: Dockerfile
+    container_name: nagging-ai-container
+    ports:
+      - "8000:8000"
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/vision-key.json
+    restart: unless-stopped
